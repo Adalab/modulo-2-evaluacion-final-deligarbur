@@ -1,36 +1,92 @@
 'use strict';
 
+
 // Variables globales
 const nameInput = document.querySelector('.js_search_input');
-const searchBtn = document.querySelector('.js_btn_search');
-const resetBtn = document.querySelector('.js_btn_reset');
-const ulSearchList = document.querySelector('.js_cocktails');
 const error = document.querySelector('.js-error');
+const searchBtn = document.querySelector('.js_btn_search');
+const ulSearchList = document.querySelector('.js_cocktails');
+const ulFaveList = document.querySelector('.js_favorite_cocktails');
+const resetBtn = document.querySelector('.js_btn_reset');
 
 let cocktails = [];
 let faveCocktails = [];
 
 
+const renderOneCocktail = (eachCocktail) => {
+    let html = '';
+
+    html = `<li class= "cocktail-card js_li_cocktails" id="${eachCocktail.idDrink}">
+        <h3 class="cocktail-card-title">${eachCocktail.strDrink}</h3>
+        <img class="cocktail-card-img" src="${eachCocktail.strDrinkThumb}">
+        </li>`;
+
+    return html;
+
+};
+
+const renderFaves = () => {
+    ulFaveList.innerHTML = '';
+
+    for (const fave of faveCocktails) {
+        console.log(faveCocktails);
+        const indexFav = faveCocktails.findIndex((item) => item.idDrink === fave.idDrink);
+
+        let faveClass = indexFav === -1 ? '' : 'fave';
+
+        ulFaveList.innerHTML += `<li class="cocktail-card js_li_cocktails ${faveClass}" id="${fave.idDrink}">
+            <h3 class="cocktail-card-title">${fave.strDrink}</h3>
+            <img class="cocktail-card-img" src="${fave.strDrinkThumb}">
+            <button class="delete js-delete-fave">X</button>
+            </li>`;
+    }
+
+};
+
+
+const handleAddFavorite = (event) => {
+    const liClickedId = event.currentTarget.id;
+
+    // con el id de nuestro cocktail clickado buscamos con cuál coincide de mi array
+    const clickedCocktail = cocktails.find((item) => item.idDrink === liClickedId);
+
+    // verificar si el cocktail seleccionado ya está en favoritos
+    const faveLiClickedIndex = faveCocktails.findIndex(
+        (item) => item.idDrink === liClickedId
+    );
+
+    // favoriteLiClickedIndex será -1 cuando el id no se encuentre en el array de favoritos
+    if (faveLiClickedIndex === -1) {
+        // si no está en mi array de favoritos, añadir al array de favoritos el cocktail seleccionado
+        faveCocktails.push(clickedCocktail);
+    } else {
+        // si está, lo quito del array de favoritos
+        faveCocktails.splice(faveLiClickedIndex, 1);
+    };
+
+    renderFaves();
+
+}
+
+
 // Función render Listado de Cóctels
 const renderAllCocktails = (array) => {
     ulSearchList.innerHTML = '';
-    for (const drink of array) {
-        if (drink.strDrinkThumb === null) {
-            const noImg = 'www.svgrepo.com/show/206298/cocktail-drink.svg';
-            ulSearchList.innerHTML += `
-            <li class= "cocktail-card js_cocktails" id="${drink.idDrink}">
-                <h3 class="cocktail-card-title">${drink.strDrink}</h3>
-                <img class="cocktail-card-img" src="${noImg}">
-            </li>`;
-        } else {
-            ulSearchList.innerHTML += `
-            <li class= "cocktail-card js_cocktails" id="${drink.idDrink}">
-                <h3 class="cocktail-card-title">${drink.strDrink}</h3>
-                <img class="cocktail-card-img" src="${drink.strDrinkThumb}">
-            </li>`;
-        };
-    };
+
+    for (const item of array) {
+        ulSearchList.innerHTML += renderOneCocktail(item);
+    }
+
+    // Añadir a favoritos
+    const allCocktailsLi = document.querySelectorAll('.js_li_cocktails');
+    for (const li of allCocktailsLi) {
+        li.addEventListener('click', handleAddFavorite);
+    }
+
 };
+
+
+
 
 
 // Función Fetch
@@ -49,7 +105,7 @@ const getData = (searchText) => {
 //Funciones manejadoras
 const handleSearch = (event) => {
     event.preventDefault();
-    const nameCocktail = nameInput.value;
+    const nameCocktail = nameInput.value.toLowerCase();
     if (nameCocktail === '') {
         error.innerHTML = 'Por favor, introduce el nombre de un cóctel.';
     } else {
@@ -61,6 +117,7 @@ const handleReset = () => {
     ulSearchList.innerHTML = '';
     nameInput = '';
 }
+
 
 // Se ejecuta al cargar la página
 searchBtn.addEventListener('click', handleSearch);
