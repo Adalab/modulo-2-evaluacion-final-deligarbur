@@ -13,6 +13,29 @@
   </head>
 
   <body>
+    <section class="search">
+      <h1 class="title">Buscador de Cócteles</h1>
+      <form class="form">
+        <label for="search_text"></label>
+        <input type="text" name="search_text" id="search_text" class="search_input js_search_input" placeholder="Buscar...">
+        <input type="submit" class="search_btn js_btn_search" value="Buscar">
+        <input type="submit" class="search_reset js_btn_reset" value="Reset">
+        </form>
+      <div>
+            <p class="js-error error"></p>
+      </div>
+    </section>
+    <main class="main">
+      <section class="faves">
+        <h2 class="faves_title">Favoritos</h2>
+        <ul class="faves_list js_favorite_cocktails"></ul>
+      </section>
+      <section class="results">
+        <h2 class="results_title">Lista</h2>
+        <ul class="results_list js_cocktails"></ul>
+      </section>   
+    </main>
 
+    <script src="./js/main.js"></script>
   </body>
 </html>
