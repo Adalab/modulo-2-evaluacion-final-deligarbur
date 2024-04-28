@@ -16,7 +16,8 @@ let faveCocktails = [];
 const renderOneCocktail = (eachCocktail) => {
     let html = '';
 
-    html = `<li class= "cocktail-card js_li_cocktails" id="${eachCocktail.idDrink}">
+    html = `
+        <li class= "cocktail-card js_li_cocktails" id="${eachCocktail.idDrink}">
         <h3 class="cocktail-card-title">${eachCocktail.strDrink}</h3>
         <img class="cocktail-card-img" src="${eachCocktail.strDrinkThumb}">
         </li>`;
@@ -25,11 +26,23 @@ const renderOneCocktail = (eachCocktail) => {
 
 };
 
+const handleDeleteFave = (event) => {
+    const clickedDeleteBtn = event.currentTarget.id;
+    const clickedDeleteCocktail = faveCocktails.find((item) => item.idDrink === clickedDeleteBtn);
+    const clickedDeleteCocktailIndex = faveCocktails.findIndex(
+        (item) => item.idDrink === clickedDeleteCocktail
+    );
+    faveCocktails.splice(clickedDeleteCocktailIndex, 1);
+
+    renderFaves();
+    localStorage.setItem('favorites', JSON.stringify(faveCocktails));
+
+}
+
 const renderFaves = () => {
     ulFaveList.innerHTML = '';
 
     for (const fave of faveCocktails) {
-        console.log(faveCocktails);
         const indexFav = faveCocktails.findIndex((item) => item.idDrink === fave.idDrink);
 
         let faveClass = indexFav === -1 ? '' : 'fave';
@@ -39,6 +52,11 @@ const renderFaves = () => {
             <img class="cocktail-card-img" src="${fave.strDrinkThumb}">
             <button class="delete js-delete-fave">X</button>
             </li>`;
+    }
+
+    const btnDeleteFave = document.querySelector('.js-delete-fave');
+    if (btnDeleteFave !== null) {
+        btnDeleteFave.addEventListener('click', handleDeleteFave);
     }
 
 };
@@ -59,6 +77,7 @@ const handleAddFavorite = (event) => {
     if (faveLiClickedIndex === -1) {
         // si no está en mi array de favoritos, añadir al array de favoritos el cocktail seleccionado
         faveCocktails.push(clickedCocktail);
+        localStorage.setItem('favorites', JSON.stringify(faveCocktails));
     } else {
         // si está, lo quito del array de favoritos
         faveCocktails.splice(faveLiClickedIndex, 1);
@@ -87,8 +106,6 @@ const renderAllCocktails = (array) => {
 
 
 
-
-
 // Función Fetch
 const getData = (searchText) => {
     const urlApi = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchText}`;
@@ -114,11 +131,24 @@ const handleSearch = (event) => {
 };
 
 const handleReset = () => {
-    ulSearchList.innerHTML = '';
     nameInput = '';
+    ulSearchList.innerHTML = '';
+    localStorage.clear();
+    // ulFaveList.innerHTML = '';
+    // faveCocktails = [];
+    // localStorage.removeItem('favorites');
 }
 
+const init = () => {
+    const cocktailsFaveLocal = localStorage.getItem('favorites');
+
+    if (cocktailsFaveLocal !== null) {
+        faveCocktails = JSON.parse(cocktailsFaveLocal);
+        renderFaves();
+    }
+};
 
 // Se ejecuta al cargar la página
+init();
 searchBtn.addEventListener('click', handleSearch);
 resetBtn.addEventListener('click', handleReset);
