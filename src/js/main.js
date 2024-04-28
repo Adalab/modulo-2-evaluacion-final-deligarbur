@@ -46,8 +46,7 @@ const getData = (searchText) => {
 };
 
 
-
-//Función manejadora
+//Funciones manejadoras
 const handleSearch = (event) => {
     event.preventDefault();
     const nameCocktail = nameInput.value;
@@ -58,5 +57,11 @@ const handleSearch = (event) => {
     }
 };
 
+const handleReset = () => {
+    ulSearchList.innerHTML = '';
+    nameInput = '';
+}
+
 // Se ejecuta al cargar la página
 searchBtn.addEventListener('click', handleSearch);
+resetBtn.addEventListener('click', handleReset);
