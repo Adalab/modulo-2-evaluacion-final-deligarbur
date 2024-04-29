@@ -1,0 +1,26 @@
+.header {
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+
+  &_top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    &-icon {
+      width: 70px;
+      padding: 5px;
+    }
+    &-title {
+      color: lightcoral;
+      font-size: 30px;
+    }
+  }
+
+  &_background {
+    height: 80%;
+    background-image: url("/images/cocktails-background-2.jpg");
+    background-size: cover;
+  }
+}

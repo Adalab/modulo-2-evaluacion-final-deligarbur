@@ -1,12 +1,17 @@
 <section class="search">
-      <h1 class="title">Buscador de Cócteles</h1>
-      <form class="form">
-        <label for="search_text"></label>
-        <input type="text" name="search_text" id="search_text" class="search_input js_search_input" placeholder="Buscar...">
-        <input type="submit" class="search_btn js_btn_search" value="Buscar">
-        <input type="submit" class="search_reset js_btn_reset" value="Reset">
-        </form>
-      <div>
-            <p class="js-error error"></p>
-      </div>
-    </section>
+  <form class="search_form">
+    <label for="search_form-label"></label>
+    <input
+      type="text"
+      name="search_text"
+      id="search_text"
+      class="search_form-input js_search_input"
+      placeholder="Buscar cócteles..."
+    />
+    <input type="submit" class="search_form-btn js_btn_search" value="Buscar" />
+    <input type="submit" class="search_form-reset js_btn_reset" value="Reset" />
+  </form>
+  <div>
+    <p class="js-error error"></p>
+  </div>
+</section>
