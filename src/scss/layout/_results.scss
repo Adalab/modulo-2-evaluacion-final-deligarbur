@@ -2,27 +2,55 @@
   display: flex;
   flex-direction: row;
   gap: 20px;
+  padding-top: 20px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
-.search_list {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 20px;
-  padding: 10px;
+.favorites {
+  width: 50vw;
+  &_title {
+    font-weight: 600;
+    color: #ff9696;
+  }
+  &_list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+  }
+}
+
+.results {
+  width: 50vw;
+  &_title {
+    color: #62c1bb;
+    font-weight: 600;
+  }
+  &_list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+  }
 }
 
 .cocktail-card {
-  width: 250px;
-  border: 5px solid lightseagreen;
-  border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  width: 150px;
   padding: 10px;
+  margin: auto;
   list-style: none;
+  transition: 0.25s all;
   text-align: center;
 
   &-img {
@@ -31,11 +59,13 @@
 
   &-title {
     font-size: 18px;
+    color: #62c1bb;
+    font-weight: 600;
   }
 }
 
 .fave {
-  background-color: lightseagreen;
+  background-color: #ff9696;
   color: white;
 }
 

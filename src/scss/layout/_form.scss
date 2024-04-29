@@ -1,7 +1,12 @@
 .search {
+  box-shadow: 0 1rem 3rem rgb(4 9 20 / 3%), 0 1rem 2rem rgb(4 9 20 / 3%),
+    0 1rem 1rem rgb(4 9 20 / 5%), 0 0.125rem 0.1875rem rgb(4 9 20 / 3%);
   &_form {
-    width: 100vw;
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+
     &-input {
       border: none;
       background-color: lightcyan;

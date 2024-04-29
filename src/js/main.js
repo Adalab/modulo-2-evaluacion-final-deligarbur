@@ -139,7 +139,7 @@ const getData = ( searchText ) => {
 };
 
 const getDataDefault = () => {
-    const urlApi = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=mojito';
+    const urlApi = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=mojito`;
     fetch( urlApi )
         .then( response => response.json() )
         .then( dataApi => {
