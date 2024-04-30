@@ -42,14 +42,14 @@ const renderFaves = () => {
         };
 
         ulFaveList.innerHTML += `
-            <li class="cocktail-card js_li_favorites fave" id="${eachCocktail.idDrink}">
-            <h3 class="cocktail-card-title">${eachCocktail.strDrink}</h3>
-            <img class="cocktail-card-img" src="${cocktailImg}">
-            <button class="delete js_delete_favorite">X</button>
+            <li class="cocktail_card js_li_favorites fave" id="${eachCocktail.idDrink}">
+            <h3 class="cocktail_card-title">${eachCocktail.strDrink}</h3>
+            <img class="cocktail_card-img" src="${cocktailImg}">
+            <button class="cocktail_card-delete js_delete_favorite">X</button>
             </li>`;
     };
 
-    ulFaveList.innerHTML += `<button class="delete js_delete_all_favorites  hidden">Borrar todo</button>`;
+    ulFaveList.innerHTML += `<button class="cocktail_card-delete js_delete_all_favorites hidden">Borrar todo</button>`;
 
     favoritesListener();
 
@@ -111,15 +111,15 @@ const renderAllCocktails = () => {
         console.log( indexFaveCocktail );
         if ( indexFaveCocktail !== -1 ) {
             ulSearchList.innerHTML += `
-                <li class= "cocktail-card js_li_cocktails fave" id="${eachCocktail.idDrink}">
-                <h3 class="cocktail-card-title">${eachCocktail.strDrink}</h3>
-                <img class="cocktail-card-img" src="${cocktailImg}">
+                <li class= "cocktail_card js_li_cocktails fave" id="${eachCocktail.idDrink}">
+                <h3 class="cocktail_card-title">${eachCocktail.strDrink}</h3>
+                <img class="cocktail_card-img" src="${cocktailImg}">
                 </li>`;
         } else {
             ulSearchList.innerHTML += `
-                <li class= "cocktail-card js_li_cocktails" id="${eachCocktail.idDrink}">
-                <h3 class="cocktail-card-title">${eachCocktail.strDrink}</h3>
-                <img class="cocktail-card-img" src="${cocktailImg}">
+                <li class= "cocktail_card js_li_cocktails" id="${eachCocktail.idDrink}">
+                <h3 class="cocktail_card-title">${eachCocktail.strDrink}</h3>
+                <img class="cocktail_card-img" src="${cocktailImg}">
                 </li>`;
         }
         allCocktailsListener();
