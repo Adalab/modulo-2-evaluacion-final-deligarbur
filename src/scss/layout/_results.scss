@@ -1,0 +1,156 @@
+.main {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 20px 10px 20px 10px;
+}
+
+.favorites {
+  width: 50vw;
+
+  &_title {
+    color: var(--lightcoral);
+    font-weight: 600;
+
+    @media screen and (width > 500px) {
+      font-size: 25px;
+    }
+
+    @media screen and (width > 1024px) {
+      font-size: 30px;
+      padding-bottom: 20px;
+    }
+  }
+
+  &_list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding-top: 10px;
+
+    @media screen and (width > 500px) {
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media screen and (width > 1024px) {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+  }
+  @media screen and (width > 500px) {
+    width: 25vw;
+    padding: 15px;
+  }
+
+  @media screen and (width > 1024px) {
+    width: 30vw;
+    padding: 20px;
+  }
+}
+
+.results {
+  width: 50vw;
+
+  &_title {
+    color: var(--nice-green);
+    font-weight: 600;
+
+    @media screen and (width > 500px) {
+      font-size: 25px;
+    }
+
+    @media screen and (width > 1024px) {
+      font-size: 30px;
+      padding-bottom: 20px;
+    }
+  }
+
+  &_list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: first baseline;
+    gap: 20px;
+    padding-top: 10px;
+
+    @media screen and (width > 1024px) {
+      gap: 30px;
+    }
+  }
+
+  @media screen and (width > 500px) {
+    width: 75vw;
+    padding: 15px;
+  }
+  @media screen and (width > 1024px) {
+    width: 70vw;
+    padding: 20px;
+  }
+}
+
+.cocktail_card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 140px;
+  padding: 10px;
+  list-style: none;
+  transition: 0.25s all;
+  box-shadow: 0 1px 6px var(--darkgrey);
+
+  &-img {
+    width: 100%;
+  }
+
+  &-title {
+    font-size: 18px;
+    color: var(--nice-green);
+    font-weight: 600;
+    padding-bottom: 5px;
+    @media screen and (width > 1024px) {
+      font-size: 20px;
+      padding-bottom: 10px;
+    }
+  }
+
+  &-delete {
+    background-color: var(--nice-green);
+    border: none;
+    padding: 5px;
+    margin-top: 5px;
+    color: white;
+    @media screen and (width > 1024px) {
+      margin-top: 10px;
+      font-size: 18px;
+      padding: 5px 10px 5px 10px;
+    }
+  }
+  @media screen and (width > 500px) {
+    width: 20vw;
+  }
+
+  @media screen and (width > 1024px) {
+    width: 25vw;
+    padding: 20px;
+  }
+}
+
+.fave {
+  background-color: var(--lightcoral);
+
+  .cocktail_card-title {
+    color: white;
+  }
+}
+
+.hidden {
+  display: none;
+}

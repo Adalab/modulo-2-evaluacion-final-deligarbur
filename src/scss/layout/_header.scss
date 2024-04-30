@@ -1,0 +1,40 @@
+.header {
+  width: 100%;
+  height: 40vh;
+
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 6px var(--darkgrey);
+
+  &_top {
+    width: 100%;
+    height: 10%;
+    position: fixed;
+    z-index: 1;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 10px;
+
+    &-icon {
+      width: 55px;
+      padding: 5px;
+    }
+    &-title {
+      color: lightcoral;
+      font-size: 25px;
+      font-weight: 700;
+    }
+  }
+
+  &_background {
+    width: 100%;
+    height: 50vh;
+    background-image: url("/images/cocktails-background-2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
