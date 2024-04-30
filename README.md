@@ -68,3 +68,5 @@ Se almacena el listado de favoritos en el localStorage. De esta forma, al recarg
 - Al final de la lista de favoritos hay un botón para borrar todos los favoritos a la vez.
 
 ### 6. Afinar la maquetación
+
+![Screenshots](https://github.com/Adalab/modulo-2-evaluacion-final-deligarbur/blob/main/public/images/Preview.png)
