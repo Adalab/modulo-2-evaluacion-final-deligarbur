@@ -199,5 +199,3 @@ init();
 searchBtn.addEventListener( 'click', handleSearch );
 resetBtn.addEventListener( 'click', handleReset );
 logBtn.addEventListener( 'click', handleLog );
-
-
