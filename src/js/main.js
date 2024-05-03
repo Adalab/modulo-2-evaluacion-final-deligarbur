@@ -7,6 +7,8 @@ const searchBtn = document.querySelector( '.js_btn_search' );
 const ulSearchList = document.querySelector( '.js_cocktails' );
 const ulFaveList = document.querySelector( '.js_favorite_cocktails' );
 const resetBtn = document.querySelector( '.js_btn_reset' );
+const logBtn = document.querySelector( '.js_button_log' );
+
 
 let cocktails = [];
 let faveCocktails = [];
@@ -112,14 +114,26 @@ const renderAllCocktails = () => {
                 <li class= "cocktail_card js_li_cocktails fave" id="${eachCocktail.idDrink}">
                 <h3 class="cocktail_card-title">${eachCocktail.strDrink}</h3>
                 <img class="cocktail_card-img" src="${cocktailImg}">
+                <ul>
+                <li>${eachCocktail.strIngredient1}</li>
+                <li>${eachCocktail.strIngredient2}</li>
+                <li>${eachCocktail.strIngredient3}</li>
+                </ul>
                 </li>`;
         } else {
             ulSearchList.innerHTML += `
                 <li class= "cocktail_card js_li_cocktails" id="${eachCocktail.idDrink}">
                 <h3 class="cocktail_card-title">${eachCocktail.strDrink}</h3>
                 <img class="cocktail_card-img" src="${cocktailImg}">
+                <ul>
+                <li>${eachCocktail.strIngredient1}</li>
+                <li>${eachCocktail.strIngredient2}</li>
+                <li>${eachCocktail.strIngredient3}</li>
+                </ul>
                 </li>`;
         }
+
+
         allCocktailsListener();
     };
 }
@@ -164,6 +178,11 @@ const handleReset = () => {
     ulSearchList.innerHTML = '';
 }
 
+const handleLog = () => {
+    const numberFaves = faveCocktails.length;
+    console.log( 'Tienes ' + numberFaves + ' favoritos.' );
+}
+
 const init = () => {
     const cocktailsFaveLocal = localStorage.getItem( 'favorites' );
 
@@ -179,3 +198,6 @@ const init = () => {
 init();
 searchBtn.addEventListener( 'click', handleSearch );
 resetBtn.addEventListener( 'click', handleReset );
+logBtn.addEventListener( 'click', handleLog );
+
+
